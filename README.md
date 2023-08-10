@@ -1,3 +1,1 @@
-# Revisão da Api de matemática 
-
-Iremos fazer a revisão da plataforma de matemática do professor Marcos Mattos
+Projeto da Plataforma de Matematica desenvolvido na matéria de Fábrica do Software II
