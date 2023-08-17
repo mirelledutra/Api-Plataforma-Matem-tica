@@ -1,11 +1,11 @@
 FROM node:20-alpine
 
-WORKDIR /app-node
+WORKDIR /api-plataforma-de-matematica
 
-EXPOSE 3001
+EXPOSE 3000
 
 COPY . .
 
 RUN npm install
 
-ENTRYPOINT npm start
+ENTRYPOINT npm run dev

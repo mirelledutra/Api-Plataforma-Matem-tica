@@ -2,6 +2,7 @@ import {describe, expect, it, jest, beforeEach, afterAll, afterEach } from "@jes
 import request from "supertest"
 import mongoose from "mongoose"
 import app from "../../app.js"
+import { response } from "express"
 
 let server
 let idCurso = false
@@ -90,7 +91,7 @@ describe ('/GET em Cursos', () => {
         .set('accept', 'aplication/json')
         .expect('content-type', /json/)
         .expect(200)
-        expect(dados._body.docs[0].modulo).toEqual('Equação de 3° Grau');
+        expect(dados._body.docs[0].modulo).toEqual('Equação de 2° Grau');
     })
 
     it("Deve retornar uma lista de Cursos filtrada por modulo", async () =>{
@@ -151,14 +152,14 @@ describe ('/PATCH em Cursos', () => {
 
     it("Deve retornar erro de modulo já cadastrado", async () => {
         const dados = await request(app)
-        .patch(`/cursos/${idCurso}`)
+        .patch(`/curso/${idCurso}`)
         .set('Authorization', `Bearer ${token}`)
         .set('Accept', 'aplication/json')
         .send({           
-                "modulo": "Equação de 3° Grau",
+                "modulo": "Equação de 2° Grau",
         })
         .expect(422)
-        expect(dados._body.message).toEqual('Modulo já cadastrado!')
+        expect(dados._body.message).toEqual("Modulo já cadastrado");
     })
 })
 

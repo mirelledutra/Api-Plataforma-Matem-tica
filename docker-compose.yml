@@ -9,12 +9,9 @@ services:
   plataforma:
     build: .
     ports:
-      - 3099:3099
+      - 3000:3000
     environment:
-      - PORT=3099
-      - DB_URL=mongodb://matebanco:27017
-      - SECRET=dsdfvds4f65s4g6aw54gf6w54DG86A486G54S86F56AF56AE54FEFADGFHhagfduydsgfugs
-      - EXPIREIN=1m
-
-volumes:
-  vol-banco:
+      - PORT=3000
+      - DB_URL=mongodb+srv://smolak:pablim123@bddoscrias.v9neqx8.mongodb.net/plataforma
+      - SECRET=rdfgdhggfjytfyterutdydfkytfyitfyti
+      - EXPIREIN=1h
