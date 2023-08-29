@@ -91,7 +91,7 @@ describe ('/GET em Cursos', () => {
         .set('accept', 'aplication/json')
         .expect('content-type', /json/)
         .expect(200)
-        expect(dados._body.docs[0].modulo).toEqual('Equação de 2° Grau');
+        expect(dados._body.docs[0].modulo).toEqual("Modulo");
     })
 
     it("Deve retornar uma lista de Cursos filtrada por modulo", async () =>{

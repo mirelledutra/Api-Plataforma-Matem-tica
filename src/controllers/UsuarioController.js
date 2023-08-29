@@ -14,13 +14,15 @@ class UsuarioController {
             }
 
             const nome = req.query.nome
-            const {page, perPage} = req.query
+            const {page, perPage} = req.query;
 
             const options = {
+
+            
                 nome: (nome),
                 page: parseInt(page) || 1,
                 limit: parseInt(perPage) > 5 ? 5 : parseInt(perPage) || 5
-            }
+            };
 
             if(!nome){
                 const usuario = await usuarios.paginate({}, options)

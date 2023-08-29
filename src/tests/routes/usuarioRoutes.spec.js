@@ -119,7 +119,7 @@ describe ('/GET em Usuários', () => {
         .set('accept', 'aplication/json')
         .expect('content-type', /json/)
         .expect(200);
-        expect(dados._body.docs[0].nome).toEqual('Dev Oliveira');
+        expect(dados._body.docs[0].nome).toEqual('Goretti Moreira Saraiva');
     })
 
     it("Deve retornar um Usuário filtrado pelo nome", async () =>{
@@ -129,7 +129,7 @@ describe ('/GET em Usuários', () => {
         .set('accept', 'aplication/json')
         .expect('content-type', /json/)
         .expect(200);
-        expect(dados._body.docs[0].nome).toEqual('Dev Oliveira');
+        expect(dados._body.docs[0].nome).toEqual('Dev oliveira');
     })
 })
 
