@@ -1,0 +1,13 @@
+// routes.js
+import express from "express";
+import PasswordController from "./controllers/PasswordController";
+
+const router = express.Router();
+
+// Rota para solicitar redefinição de senha
+router.post("/password/reset-request", PasswordController.resetPasswordRequest);
+
+// Rota para definir uma nova senha
+router.post("/password/reset", PasswordController.resetPassword);
+
+export default router;
