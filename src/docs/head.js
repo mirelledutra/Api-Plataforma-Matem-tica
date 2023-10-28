@@ -53,7 +53,12 @@ const swaggerOptions = {
         {
           name: "Rotas",
           description: "Rotas do Sistema"
-        }      
+        },      
+        {
+          name: "Aulas",
+          description: "Aulas dos Cursos"
+        },
+    
 
       ],
       paths: {},
