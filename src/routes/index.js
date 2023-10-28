@@ -6,6 +6,8 @@ import rotas from "./rotasRoutes.js"
 import matricula from "./matriculaRoutes.js"
 import grupos from "./gruposRoutes.js"
 import autenticacao from "./AutenticacaoRoutes.js"
+import aulas from "./AulaRoutes.js"
+
 
 /**
  * @swagger
@@ -262,7 +264,8 @@ const routes = (app) => {
         rotas,
         matricula,
         grupos,
-        autenticacao
+        autenticacao,
+        aulas
     )
 }
 
