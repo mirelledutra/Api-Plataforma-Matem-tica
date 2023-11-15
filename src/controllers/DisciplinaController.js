@@ -46,6 +46,7 @@ class DisciplinaController {
 
   static cadastrarDisciplina = async (req, res) => {
     try {
+      console.log('entrou')
       if (await AuthPermissao.verificarPermissao('disciplinas', 'post', req, res) !== false) {
         return;
       }

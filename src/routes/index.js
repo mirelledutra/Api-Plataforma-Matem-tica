@@ -7,6 +7,7 @@ import matricula from "./matriculaRoutes.js"
 import grupos from "./gruposRoutes.js"
 import autenticacao from "./AutenticacaoRoutes.js"
 import aulas from "./AulaRoutes.js"
+import disciplinas from "./DisciplinaRoutes.js"
 
 
 /**
@@ -265,7 +266,8 @@ const routes = (app) => {
         matricula,
         grupos,
         autenticacao,
-        aulas
+        aulas,
+        disciplinas
     )
 }
 
