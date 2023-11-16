@@ -134,6 +134,7 @@ function seedUsuario(qtdusuarios) {
     rotas: rotas,
     grupos: removerChaves(grupos)
   }
+  console.log(usuarioFixo)
   usuarios.push(usuarioFixo);
 
   for (let i = 1; i <= qtdusuarios; i++) {

@@ -64,6 +64,7 @@ class UsuarioController {
             const id = req.params.id
 
             usuarios.findById(id).then(async (usuario) => {
+
                 let user = JSON.parse(JSON.stringify(usuario))
                 user.grupos = await grupos.find({_id: {$in: user.grupos}}).lean()
 

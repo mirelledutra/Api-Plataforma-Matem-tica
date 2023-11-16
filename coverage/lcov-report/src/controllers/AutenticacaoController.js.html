@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">30% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/10</span>
+                <span class='fraction'>3/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">12.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/8</span>
+                <span class='fraction'>1/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">30% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/10</span>
+                <span class='fraction'>3/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -119,25 +119,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -172,22 +172,22 @@ class AutenticacaoController {
     static logar = async (req,res) =&gt; {
 &nbsp;
         const {user, email, senha} = req.body
-        const userExist = await User.findOne({ user }).select('+senha') || await User.findOne({ email }).select('+senha')
+        const userExist = await User.findOne({ user }).select('+senha') || <span class="branch-1 cbranch-no" title="branch not covered" >await User.findOne({ email }).select('+senha')</span>
         
 &nbsp;
-        if(!userExist){
-            return res.status(404).json({error: true, code:404,message: 'Usuário inexistente!'})
+<span class="cstat-no" title="statement not covered" >        if(!userExist){</span>
+<span class="cstat-no" title="statement not covered" >            return res.status(404).json({error: true, code:404,message: 'Usuário inexistente!'})</span>
 &nbsp;
         }
-        if(! (await bcript.compare(senha, userExist.senha))){
-           return res.status(400).json({error: true, code:400, message: "Usuário ou senha incorretos!"})
+<span class="cstat-no" title="statement not covered" >        if(! (await bcript.compare(senha, userExist.senha))){</span>
+<span class="cstat-no" title="statement not covered" >           return res.status(400).json({error: true, code:400, message: "Usuário ou senha incorretos!"})</span>
 &nbsp;
         }
-        <span class="missing-if-branch" title="if path not taken" >I</span>if(!userExist.ativo){
+<span class="cstat-no" title="statement not covered" >        if(!userExist.ativo){</span>
 <span class="cstat-no" title="statement not covered" >            return res.status(400).json({error: true, code:400, message:"Usuário inativo!"})</span>
         }
 &nbsp;
-        return res.status(200).json({
+<span class="cstat-no" title="statement not covered" >        return res.status(200).json({</span>
             token: jwt.sign(
                 {   
                     id: userExist._id,
@@ -220,7 +220,7 @@ export default AutenticacaoController
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-08-27T15:15:04.280Z
+                at 2023-10-29T14:44:49.891Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

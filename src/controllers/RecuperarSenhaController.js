@@ -11,7 +11,7 @@ const PasswordController = {
       const { email } = req.body;
 
       // Verifique se o e-mail existe no banco de dados
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email: email });
 
       if (!user) {
         return res.status(404).json({ message: "E-mail não encontrado." });
@@ -20,6 +20,7 @@ const PasswordController = {
       // Crie um token seguro para a redefinição de senha
       const token = crypto.randomBytes(20).toString("hex");
 
+      const senhaHash = await senhaHashMiddleware.criptografar(user.password);
       // Defina o token e a data de expiração no usuário
       user.resetPasswordToken = token;
       user.resetPasswordExpires = Date.now() + 3600000; // Token válido por 1 hora

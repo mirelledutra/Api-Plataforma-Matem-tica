@@ -18,7 +18,7 @@ const router = express.Router();
  *      parameters:
  *        - in: query
  *          name: token
- *          description: Token único encaminhado por e-mnail
+ *          description: Token único encaminhado por e-mail
  *          required: true
  *          schema:
  *            type: string

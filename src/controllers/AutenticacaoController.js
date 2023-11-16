@@ -9,6 +9,9 @@ class AutenticacaoController {
         const {user, email, senha} = req.body
         const userExist = await User.findOne({ user }).select('+senha') || await User.findOne({ email }).select('+senha')
         
+        console.log(userExist)
+        console.log(user)
+        console.log(senha)
 
         if(!userExist){
             return res.status(404).json({error: true, code:404,message: 'Usuário inexistente!'})

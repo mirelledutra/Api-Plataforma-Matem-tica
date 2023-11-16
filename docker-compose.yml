@@ -1,17 +1,17 @@
 version: '3.8'
 services: 
-  matebanco:
-    image: mongo:4.4.6
-    volumes:
-      - vol-banco:/data/db
-    ports:
-      - 27017:27017
+  # matebanco:
+  #   image: mongo:4.4.6
+  #   volumes:
+  #     - vol-banco:/data/db
+  #   ports:
+  #     - 27017:27017
   plataforma:
     build: .
     ports:
       - 3000:3000
     environment:
       - PORT=3000
-      - DB_URL=mongodb+srv://smolak:pablim123@bddoscrias.v9neqx8.mongodb.net/plataforma
+      - DB_URL=mongodb+srv://matematicaplataforma7:pm123456@plataforma.mcuxyre.mongodb.net/
       - SECRET=rdfgdhggfjytfyterutdydfkytfyitfyti
       - EXPIREIN=1h

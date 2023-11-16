@@ -4,6 +4,29 @@ import PasswordController from "./controllers/PasswordController";
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * paths:
+ *  /password/reset-request:
+ *    post:
+ *      tags:
+ *          - Recuperar Senha
+ *      summary: Rota para solicitar redefinição de senha
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *                $ref: '#/components/schemas/reset_password_request'
+ *      responses:
+ *        '200':
+ *          description: E-mail de redefinição de senha enviado
+ *         '404':
+ *           description: E-mail não encontrado.
+ *         '500':
+ *           description: Erro interno do servidor.
+ */
+
+
 // Rota para solicitar redefinição de senha
 router.post("/password/reset-request", PasswordController.resetPasswordRequest);
 
