@@ -10,23 +10,23 @@ class CursoController {
               return
           }
 
-          const modulo = req.query.modulo
+          const nomeCurso = req.query.modulo
           const {page, perPage} = req.query
 
           const options = {
-              modulo: (modulo),
+              nomeCurso: (nomeCurso),
               page: parseInt(page) || 1,
               limit: parseInt(perPage) > 5 ? 5 : parseInt(perPage) || 5
           }
 
-          if(!modulo){
+          if(!nomeCurso){
               const curso = await cursos.paginate({}, options)
               let cursoRetorn = JSON.parse(JSON.stringify(curso))
     
               return res.json(cursoRetorn)
 
             }else{
-              const curso = await cursos.paginate({modulo: new RegExp(modulo, 'i')}, options)
+              const curso = await cursos.paginate({modulo: new RegExp(nomeCurso, 'i')}, options)
               let cursoRetorn = JSON.parse(JSON.stringify(curso))
     
               return res.json(cursoRetorn)
@@ -74,9 +74,9 @@ class CursoController {
       
         let curso = new cursos(req.body);
 
-        let moduloExiste = await cursos.findOne({modulo:req.body.modulo})
+        let nomeCursoExiste = await cursos.findOne({nomeCurso:req.body.nomeCurso})
 
-        if(!moduloExiste){
+        if(!nomeCursoExiste){
           
           curso.save().then(() => {
             res.status(201).send(curso.toJSON())
@@ -85,7 +85,7 @@ class CursoController {
               //console.log(err)
               return res.status(422).json({ error: true, code: 422, message: "Erro nos dados, confira e repita!" })
           })
-        }else if(moduloExiste){
+        }else if(nomeCursoExiste){
           return res.status(422).json({error: true, code: 422, message: "Modulo já cadastrado!" })
         }
 
@@ -104,10 +104,10 @@ class CursoController {
           
           var id = req.params.id
           cursos.findById(id).then(async ()=>{
-            let moduloExiste = await cursos.findOne({modulo:req.body.modulo})
+            let nomeCursoExiste = await cursos.findOne({nomeCurso:req.body.nomeCurso})
             
-            if(moduloExiste){
-              return res.status(422).json({error: true, code: 422, message: "Modulo já cadastrado!" })
+            if(nomeCursoExiste){
+              return res.status(422).json({error: true, code: 422, message: "Curso já cadastrado!" })
             }
             
             cursos.findByIdAndUpdate(id,{$set: req.body}).then(()=>{

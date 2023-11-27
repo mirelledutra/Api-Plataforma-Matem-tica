@@ -22,15 +22,18 @@ const router = express.Router();
  *            schema:
  *              type: object
  *              properties:
- *                modulo:
+ *                nomeCurso:
  *                  type: string
  *                  example: Equação de 1° grau
- *                descricao:
+ *                area:
  *                  type: string
- *                  example: "Neste curso ensinarei sobre equação!"
- *                nivel:
+ *                  example: Matemática
+ *                descricao: 
  *                  type: string
- *                  example: Medio
+ *                  example: "Em resumo, equação de 1º grau com uma incógnita é uma expressão algébrica que segue o formato ax + b = 0. Elas podem ser muito úteis para traduzir problemas matemáticos em uma linguagem numérica."
+ *                tipo:
+ *                  type: string
+ *                  example: Ensino Medio
  *                professor:
  *                  type: string
  *                  example: "Smolak Teacher"      

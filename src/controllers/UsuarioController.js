@@ -128,23 +128,22 @@ class UsuarioController {
             }
             const id = req.params.id
             const erros = [];
-            usuarios.findById(id).then(async () => {
+            usuarios.findById(id).then(async (usuario) => {
 
-                let usuario = new usuarios(req.body)
                 let emailExiste = await usuarios.findOne({email:req.body.email})
                 let userExiste = await usuarios.findOne({user: req.body.user})
                 
-                if(emailExiste){
+                if(emailExiste.email !== usuario.email){
                     erros.push({error: true, code: 422, message: "E-mail já cadastrado!" })
                 }
-                if(userExiste){
+                if(emailExiste.user !== usuario.user){
                     erros.push({error: true, code: 422, message: "Usuario já cadastrado!"})
                 }
                     
-                if(usuario.senha){
+                if(req.body.senha){
                     
                     if(req.body.senha.length >= 8){
-                        var senhaHash = await bcrypt.hash(usuario.senha, 8)
+                        var senhaHash = await bcrypt.hash(req.body.senha, 8)
                         req.body.senha = senhaHash
                     }else{
                         erros.push({ error: true, code: 422, message: "Senha informada menor que 8 caracteres!" })
@@ -164,7 +163,7 @@ class UsuarioController {
                 })
             })
             .catch((err)=>{
-                //console.log(err)
+                console.log(err)
                 return res.status(404).json({error: true, code: 404, message: "Usuário não encontrado!" })
             })
         }
